@@ -49,6 +49,16 @@ echo DATABASE_URL="mysql://root:password@127.0.0.1:3306/mydb?connection_limit=5"
 prisma introspect # スキーマファイルのチェック
 ```
 
+## マイグレーションについて
+
+DB の構造を変更したいときどうすればええの？
+`./schema.prisma`で model やらを編集
+下記のコマンドを実行すると`/migrations`にマイグレーションファイルが生成される
+
+```shell
+prisma migrate save --experimental # マイグレーション
+```
+
 ## メモ
 
 - スキーマファイルの場所の指定は `package.json` の `prisma` で指定できる
@@ -57,10 +67,4 @@ prisma introspect # スキーマファイルのチェック
 
 ```shell
 prisma introspect
-```
-
-- マイグレーション
-
-```shell
-prisma migrate save --experimental
 ```
