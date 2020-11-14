@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {},
   "prisma": {
-    "schema": "./schema.prisma"
+    "schema": "./prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^2.11.0"

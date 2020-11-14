@@ -1,0 +1,25 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Model",
+          "model": "Post",
+          "arguments": [
+            {
+              "name": "",
+              "value": "[authorId]"
+            },
+            {
+              "name": "name",
+              "value": "\"authorId\""
+            }
+          ]
+        },
+        "directive": "index"
+      }
+    }
+  ]
+}

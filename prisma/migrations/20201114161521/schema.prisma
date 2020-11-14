@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 model User {
@@ -22,8 +22,10 @@ model Post {
   updatedAt DateTime @updatedAt
   published Boolean  @default(false)
   title     String
-  author    User?    @relation(fields: [authorId], references: [id])
   authorId  Int?
+  author    User?    @relation(fields: [authorId], references: [id])
+
+  @@index([authorId], name: "authorId")
 }
 
 enum Role {
