@@ -18,14 +18,16 @@ class PrismaTestEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config)
 
-    this.dbName = `test_${nanoid()}.db`
-    process.env.DATABASE_URL = `file:${this.dbName}`
-    this.global.process.env.DATABASE_URL = `file:${this.dbName}`
+    this.dbName = `test_${nanoid()}`
+    this.connectionString = `mysql://root:password@127.0.0.1:3306/prisma?schema=${this.dbName}`
     this.dbPath = path.join(__dirname, this.dbName)
   }
 
   async setup() {
-    await exec(`${prismaBinary} db push --preview-feature`)
+    process.env.DATABASE_URL = this.connectionString
+    this.global.process.env.DATABASE_URL = this.connectionString
+
+    await exec(`${prismaBinary} db push --preview-feature --ignore-migrations`)
     return super.setup()
   }
 
