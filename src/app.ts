@@ -35,6 +35,7 @@ app.post(`/todos`, async (req, res) => {
   const result = await prisma.todo.create({
     data: {
       ...req.body,
+      updatedAt: new Date(),
     },
   });
   res.json(result);
@@ -42,19 +43,21 @@ app.post(`/todos`, async (req, res) => {
 
 app.put("/todos/:id", async (req, res) => {
   const { id } = req.params;
-  const post = await prisma.todo.update({
+  const result = await prisma.todo.update({
     where: { id: Number(id) },
-    ...req.body,
+    data: {
+      ...req.body,
+    },
   });
-  res.json(post);
+  res.json(result);
 });
 
 app.delete(`/todos/:id`, async (req, res) => {
   const { id } = req.params;
-  const post = await prisma.todo.delete({
+  const result = await prisma.todo.delete({
     where: {
       id: Number(id),
     },
   });
-  res.json(post);
+  res.json(result);
 });
