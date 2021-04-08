@@ -6,6 +6,15 @@ export const prisma = new PrismaClient();
 export const app = express();
 
 app.use(bodyParser.json());
+app.use(function (_req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.get(`/todos`, async (req, res) => {
   const result = await prisma.todo.findMany();
