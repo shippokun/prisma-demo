@@ -12,7 +12,7 @@ npm ci
 
 ```shell
 docker-compose up -d # dbの立ち上げ
-npm run dev # apiの立ち上げ
+npm run start # apiの立ち上げ
 ```
 
 ## シード
